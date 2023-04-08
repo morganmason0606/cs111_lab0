@@ -4,6 +4,7 @@
 #include <linux/seq_file.h>
 #include <linux/sched.h>
 
+static struct proc_dir_entry *entry; 
 static int example(struct seq_file *m, void *v){
 	//seq_printf(m, "hello world\n");//writes to file
 	int i = 0;
@@ -23,6 +24,7 @@ static int __init proc_count_init(void)
 
 static void __exit proc_count_exit(void)
 {
+	proc_remove(entry);//how does it work
 	pr_info("proc_count: exit\n");
 }
 
