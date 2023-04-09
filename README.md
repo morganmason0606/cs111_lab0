@@ -4,19 +4,21 @@
 
 # A Kernel Seedling
 
-One sentence description
+proc_count is a kernel program that will record the number of running processes to the file /proc/count
 
 ## Building
 
-Explain how to build your kernel module
+In bash,  run " make " . This will create several files. 
 
 ## Running
 
-Explain how to run your kernel module and what to expect
+In bash, run " sudo insmod proc_count.ko " . This will insert the module into the kernel
+At this point, the program should be working. You can check this by looking for proc_count with "sudo dmesg -l info" or "cat /proc/count"
 
 ## Cleaning Up
 
-Explain how to remove your kernel module and clean up the code
+In bash, run " sudo rmmod proc_count ". This should remove the module and file. 
+You can also run " make clean " to remove the built versio nof proc_count.
 
 ## Testing
 
