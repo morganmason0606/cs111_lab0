@@ -5,7 +5,7 @@
 #include <linux/sched.h>
 
 static struct proc_dir_entry *entry; 
-static int count_proc(struct seq_file *m, void *v){
+static int count_procs(struct seq_file *m, void *v){
 	
 
 	//uint here assumes there will be less than UINT_MAX(very large) processes on a computer
@@ -24,8 +24,8 @@ static int count_proc(struct seq_file *m, void *v){
 
 static int __init proc_count_init(void)
 {
-	//creates a process named count with no parent
-	entry = proc_create_single("count", 0, NULL, count_proc);
+	//creates entry, a process that will count the number of processes 
+	entry = proc_create_single("count", 0, NULL, count_procs);
 	
 	pr_info("proc_count: init\n");
 	return 0;
@@ -33,6 +33,7 @@ static int __init proc_count_init(void)
 
 static void __exit proc_count_exit(void)
 {
+	//removes entry
 	proc_remove(entry);
 	pr_info("proc_count: exit\n");
 }
