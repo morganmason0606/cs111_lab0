@@ -18,7 +18,7 @@ static int count_procs(struct seq_file *m, void *v){
 	}
 
 	//print i to file		
-	seq_printf(m,"%d\n", i);
+	seq_printf(m,"%u\n", i);
 	return 0;
 }
 
